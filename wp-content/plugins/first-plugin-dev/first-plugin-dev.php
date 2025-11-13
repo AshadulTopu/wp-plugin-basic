@@ -19,6 +19,11 @@
 
 
 
+//  define constant
+define("PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
+define("PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
+define("PLUGIN_VERSION", '1.0.0');
+
 
 
 //  Admin Menu on Dashboard
@@ -78,7 +83,8 @@ function first_plugin_dev_page()
 // }
 function first_plugin_dev_submenu_page()
 {
-    echo '<h1>First Plugin Dev Submenu</h1>';
+    // echo '<h1>First Plugin Dev Submenu</h1>';
+    include_once PLUGIN_DIR_PATH . 'views/submenu.php';
 }
 
 // //  Admin Settings
@@ -100,3 +106,29 @@ function submenu_under_wp_setting_page()
 {
     echo '<h1>Submenu under wp setting</h1>';
 }
+
+
+/**
+ * enqueue style and script
+ * Never worry about cache again!
+ */
+function FPD_load_plugin_scripts()
+{
+    // create my own version codes
+    // $FPD_js_ver = date("ymd-Gis", filemtime(PLUGIN_DIR_URL . 'js/main.js'));
+    // $FPD_css_ver = date("ymd-Gis", filemtime(PLUGIN_DIR_URL . 'css/style.css'));
+
+    // enqueue script and style
+    // wp_enqueue_script('FPD_main', PLUGIN_DIR_URL . 'js/main.js', array(''), $FPD_js_ver);
+    // wp_register_style('FPD_css', PLUGIN_DIR_URL . 'css/style.css', false, $FPD_css_ver);
+    // wp_enqueue_style('FPD_css');
+
+
+    wp_enqueue_style('FPD-style', PLUGIN_DIR_URL . "assets/css/style.css", [], '1.0.0'); // remove enqueue location for admin
+
+}
+
+/*
+ * use init action for enqueue style and script for admin
+ */
+add_action('init', 'FPD_load_plugin_scripts');
