@@ -43,6 +43,17 @@ function first_plugin_dev_menu()
         'first-plugin-dev-submenu',
         'first_plugin_dev_submenu_page'
     );
+
+    // submenu under wp setting
+    add_submenu_page(
+        'options-general.php',
+        // 'first-plugin-dev',
+        'Submenu under wp setting',
+        'Submenu under wp setting',
+        'manage_options',
+        'submenu-under-wp-setting',
+        'submenu_under_wp_setting_page'
+    );
 }
 
 function first_plugin_dev_page()
@@ -83,3 +94,9 @@ function first_plugin_dev_submenu_page()
 //     echo '<p>Enter your text here.</p>';
 // }
 // add_action('first-plugin-dev-group', 'first_plugin_dev_settings_section');
+
+
+function submenu_under_wp_setting_page()
+{
+    echo '<h1>Submenu under wp setting</h1>';
+}
