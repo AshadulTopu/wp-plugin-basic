@@ -68,7 +68,6 @@ function first_plugin_dev_page()
 function first_plugin_dev_submenu_page()
 {
     echo '<h1>First Plugin Dev Submenu</h1>';
-    echo '<p>First Plugin Dev Submenu</p>';
 }
 
 // //  Admin Settings
